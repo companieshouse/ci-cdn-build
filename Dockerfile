@@ -4,9 +4,9 @@ ARG ruby_install_version=0.7.0
 
 ARG ruby_version=2.3.3
 
-ENV LANG en_US.UTF-8
-
 ARG nodejs_major_version=10
+
+ENV LANG en_US.UTF-8
 
 RUN yum install -y epel-release
 
