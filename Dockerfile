@@ -10,7 +10,7 @@ ARG nodejs_major_version=10
 
 RUN yum install -y epel-release
 
-RUN yum install -y gcc-c++ make bzip2 git
+RUN yum install -y gcc-c++ make bzip2 zip git
 
 RUN yum clean all
 
