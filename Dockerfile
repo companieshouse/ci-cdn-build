@@ -27,5 +27,5 @@ RUN gem install bundler -v ${bundler_version}
 RUN rpm --import http://yum-repository.platform.aws.chdev.org/RPM-GPG-KEY-platform-noarch && \
     yum install -y yum-utils && \
     yum-config-manager --add-repo http://yum-repository.platform.aws.chdev.org/platform-noarch.repo && \
-    yum install -y platform-tools-common-${platform_tools_version} && \
+    yum install -y platform-tools-common-${platform_tools_common_version} && \
     yum clean all
