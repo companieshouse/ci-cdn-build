@@ -1,9 +1,10 @@
 FROM centos:7.6.1810
 
 ARG bundler_version=2.0.2
+ARG nodejs_major_version=10
+ARG platform_tools_common_version=1.0.6
 ARG ruby_install_version=0.7.0
 ARG ruby_version=2.3.3
-ARG nodejs_major_version=10
 
 ENV LANG en_US.UTF-8
 
@@ -26,5 +27,5 @@ RUN gem install bundler -v ${bundler_version}
 RUN rpm --import http://yum-repository.platform.aws.chdev.org/RPM-GPG-KEY-platform-noarch && \
     yum install -y yum-utils && \
     yum-config-manager --add-repo http://yum-repository.platform.aws.chdev.org/platform-noarch.repo && \
-    yum install -y platform-tools-common-1.0.6 && \
+    yum install -y platform-tools-common-${platform_tools_version} && \
     yum clean all
