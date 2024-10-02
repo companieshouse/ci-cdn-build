@@ -1,7 +1,7 @@
 FROM centos:7.6.1810
 
 ARG bundler_version=2.0.2
-ARG nodejs_major_version=10
+ARG nodejs_major_version=20
 ARG platform_tools_common_version=1.0.6
 ARG ruby_install_version=0.7.0
 ARG ruby_version=2.3.3
