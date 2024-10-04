@@ -1,12 +1,20 @@
 FROM centos:7.6.1810
 
 ARG bundler_version=2.0.2
-ARG nodejs_major_version=10
+ARG nodejs_major_version=12
 ARG platform_tools_common_version=1.0.6
 ARG ruby_install_version=0.7.0
 ARG ruby_version=2.3.3
 
 ENV LANG en_US.UTF-8
+
+# Centos 7 has reached EOL (End of Life), 1 July 2024
+# Temporarily adjust repostiories to ensure the build succeeds
+# https://serverfault.com/a/1161847
+
+RUN sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/CentOS-*.repo && \
+    sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/CentOS-*.repo && \
+    sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/CentOS-*.repo
 
 RUN yum install -y epel-release && \
     yum install -y gcc-c++ make bzip2 zip git && \
