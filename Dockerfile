@@ -12,9 +12,11 @@ ENV LANG en_US.UTF-8
 # Temporarily adjust repostiories to ensure the build succeeds
 # https://serverfault.com/a/1161847
 
-RUN sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/CentOS-*.repo && \
-    sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/CentOS-*.repo && \
-    sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/CentOS-*.repo
+RUN sed -i \
+    -e 's/mirror\(\.centos\.org\)/vault\1/g' \
+    -e 's/^#\(.*baseurl=http\)/\1/' \
+    -e 's/^\(mirrorlist=http\)/#\1/' \
+    /etc/yum.repos.d/CentOS-*.repo
 
 RUN yum install -y epel-release && \
     yum install -y gcc-c++ make bzip2 zip git && \
